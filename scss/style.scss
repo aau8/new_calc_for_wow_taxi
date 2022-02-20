@@ -1,0 +1,121 @@
+@import './_reset';
+
+$second: rgba(0,0,0,.6);
+$outline: #cecece;
+$radius: 4px;
+$tr: .3s;
+
+* {
+    font-family: sans-serif;
+}
+
+html,body {
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px 0;
+}
+
+.select__container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0 24px;
+}
+
+// Поле выбора
+.select {
+    width: 100%;
+    position: relative;
+
+    &._open {
+
+        & .select__dropdown {
+            pointer-events: all;
+            opacity: 1;
+        }
+    }
+}
+
+.select__input {
+    height: 42px;
+
+    & input {
+        width: 100%;
+        height: 100%;
+        border: 1px solid $outline;
+        border-radius: $radius;
+        padding: 0 12px;
+    }
+}
+
+.select__input-chevron {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translate(0, -50%);
+    width: 16px;
+    height: 16px;
+}
+
+.select__dropdown {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(0, 100%);
+    width: 100%;
+    max-height: 200px;
+    background: #fff;
+    border: 1px solid $outline;
+    border-radius: 0 0 $radius $radius;
+    overflow-y: auto;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.select__dropdown-title {
+    display: inline-block;
+    font-size: 13px;
+    padding: 6px 12px;
+    color: $second;
+}
+
+.select__list {
+    display: flex;
+    flex-direction: column;
+    padding: 4px 0;
+}
+
+.select__item {
+    display: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: $tr;
+
+    &:hover {
+        background-color: #cacaca;
+    }
+
+    &._selected {
+        color: blue;
+    }
+
+    &._show {
+        display: inline-block;
+    }
+}
+
+.price {
+    font-size: 32px;
+    margin-top: 32px;
+}
