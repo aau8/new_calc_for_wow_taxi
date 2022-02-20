@@ -89,9 +89,9 @@ function calcPrice() {
         fetch('./cities.json')
             .then(data => data.json())
             .then(json => {
-                const priceTable = json[whereFromCityId]
-                const price = priceTable[whereCityId]
-
+                const priceTable = json[whereFromCityId-1]
+                const price = priceTable[whereCityId-1]
+                console.log(priceTable, price)
                 priceContainer.innerText = new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB' }).format(price)
             })
             .catch(err => console.log(err))
