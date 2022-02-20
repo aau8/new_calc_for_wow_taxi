@@ -86,7 +86,7 @@ function calcPrice() {
         const whereFromCityId = Number(whereFrom.dataset.cityId)
         const priceContainer = document.querySelector('.price')
 
-        fetch('../cities.json')
+        fetch('./cities.json')
             .then(data => data.json())
             .then(json => {
                 const priceTable = json[whereFromCityId]
