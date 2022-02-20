@@ -101,7 +101,7 @@ html, body {
   max-width: 900px;
   width: 100%;
   margin: 0 auto;
-  padding: 32px 0;
+  padding: 32px 16px;
 }
 
 .select__container {
@@ -114,7 +114,17 @@ html, body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 0 24px;
+  gap: 12px 24px;
+}
+
+@media (max-width: 500px) {
+  .select__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 .select {
@@ -153,6 +163,7 @@ html, body {
 
 .select__dropdown {
   position: absolute;
+  z-index: 1;
   bottom: 0;
   left: 0;
   -webkit-transform: translate(0, 100%);

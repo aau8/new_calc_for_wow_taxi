@@ -23,14 +23,18 @@ html,body {
     max-width: 900px;
     width: 100%;
     margin: 0 auto;
-    padding: 32px 0;
+    padding: 32px 16px;
 }
 
 .select__container {
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 0 24px;
+    gap: 12px 24px;
+
+    @media (max-width: 500px) {
+        flex-direction: column;
+    }
 }
 
 // Поле выбора
@@ -70,6 +74,7 @@ html,body {
 
 .select__dropdown {
     position: absolute;
+    z-index: 1;
     bottom: 0;
     left: 0;
     transform: translate(0, 100%);
