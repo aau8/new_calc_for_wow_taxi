@@ -16,6 +16,7 @@ for (let i = 0; i < selectElems.length; i++) {
     const input = select.querySelector('.select__input input')
     const dropdown = select.querySelector('.select__dropdown')
     const itemElems = dropdown.querySelectorAll('.select__item')
+    const noResult = dropdown.querySelector('.select__item-no-result')
 
     input.addEventListener('focus', e => {
         removeAll('.select', '_open')
@@ -40,9 +41,16 @@ for (let i = 0; i < selectElems.length; i++) {
     
             removeAll(itemElems, '_show')
     
-            for (let i = 0; i < array.length; i++) {
-                const elem = array[i];
-                elem.classList.add('_show')
+            if (array.length) {
+                noResult.classList.remove('_show')
+                
+                for (let i = 0; i < array.length; i++) {
+                    const elem = array[i];
+                    elem.classList.add('_show')
+                }
+            }
+            else {
+                noResult.classList.add('_show')
             }
         }
     })
@@ -91,7 +99,7 @@ function calcPrice() {
             .then(json => {
                 const priceTable = json[whereFromCityId-1]
                 const price = priceTable[whereCityId-1]
-                console.log(priceTable, price)
+
                 priceContainer.innerText = new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB' }).format(price)
             })
             .catch(err => console.log(err))
